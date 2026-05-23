@@ -58,3 +58,12 @@
 [2026-05-23T16:35:08.320+0000] {subprocess.py:106} INFO - Setting default log level to "WARN".
 [2026-05-23T16:35:08.321+0000] {subprocess.py:106} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
 [2026-05-23T16:35:10.960+0000] {job.py:229} INFO - Heartbeat recovered after 2110.25 seconds
+[2026-05-23T16:35:14.722+0000] {subprocess.py:106} INFO - 26/05/23 16:35:14 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[2026-05-23T16:35:19.479+0000] {subprocess.py:106} INFO - [Stage 0:>                                                          (0 + 3) / 3]                                                                                Connecting to Kafka Cluster over SSL...
+[2026-05-23T16:35:19.481+0000] {subprocess.py:106} INFO - Batch processing complete. Exiting cleanly.
+[2026-05-23T16:35:20.249+0000] {subprocess.py:110} INFO - Command exited with return code 0
+[2026-05-23T16:35:20.390+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-05-23T16:35:20.391+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=fraud_medallion_pipeline, task_id=run_bronze_layer, run_id=scheduled__2026-05-23T15:55:00+00:00, execution_date=20260523T155500, start_date=20260523T160000, end_date=20260523T163520
+[2026-05-23T16:35:20.439+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-05-23T16:35:20.487+0000] {taskinstance.py:3925} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-05-23T16:35:20.493+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -4829,3 +4829,24 @@
 [2026-05-23T16:35:07.234+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:35:07.233+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2026-05-23T16:35:07.268+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:35:07.268+0000] {dag.py:4180} INFO - Setting next_dagrun for fraud_medallion_pipeline to 2026-05-23 16:35:00+00:00, run_after=2026-05-23 16:40:00+00:00
 [2026-05-23T16:35:07.285+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/spark_interval_ingestion.py took 0.114 seconds
+[2026-05-23T16:35:37.363+0000] {processor.py:186} INFO - Started process (PID=42536) to work on /opt/airflow/dags/spark_interval_ingestion.py
+[2026-05-23T16:35:37.365+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/spark_interval_ingestion.py for tasks to queue
+[2026-05-23T16:35:37.367+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:35:37.367+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/spark_interval_ingestion.py
+[2026-05-23T16:35:37.385+0000] {processor.py:925} INFO - DAG(s) 'fraud_medallion_pipeline' retrieved from /opt/airflow/dags/spark_interval_ingestion.py
+[2026-05-23T16:35:37.417+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:35:37.416+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-05-23T16:35:37.446+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:35:37.446+0000] {dag.py:4180} INFO - Setting next_dagrun for fraud_medallion_pipeline to 2026-05-23 16:35:00+00:00, run_after=2026-05-23 16:40:00+00:00
+[2026-05-23T16:35:37.462+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/spark_interval_ingestion.py took 0.107 seconds
+[2026-05-23T16:36:07.706+0000] {processor.py:186} INFO - Started process (PID=50198) to work on /opt/airflow/dags/spark_interval_ingestion.py
+[2026-05-23T16:36:07.707+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/spark_interval_ingestion.py for tasks to queue
+[2026-05-23T16:36:07.708+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:36:07.707+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/spark_interval_ingestion.py
+[2026-05-23T16:36:07.721+0000] {processor.py:925} INFO - DAG(s) 'fraud_medallion_pipeline' retrieved from /opt/airflow/dags/spark_interval_ingestion.py
+[2026-05-23T16:36:07.743+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:36:07.743+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-05-23T16:36:07.754+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:36:07.754+0000] {dag.py:4180} INFO - Setting next_dagrun for fraud_medallion_pipeline to 2026-05-23 16:35:00+00:00, run_after=2026-05-23 16:40:00+00:00
+[2026-05-23T16:36:07.760+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/spark_interval_ingestion.py took 0.060 seconds
+[2026-05-23T16:36:37.954+0000] {processor.py:186} INFO - Started process (PID=50203) to work on /opt/airflow/dags/spark_interval_ingestion.py
+[2026-05-23T16:36:37.955+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/spark_interval_ingestion.py for tasks to queue
+[2026-05-23T16:36:37.956+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:36:37.956+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/spark_interval_ingestion.py
+[2026-05-23T16:36:37.970+0000] {processor.py:925} INFO - DAG(s) 'fraud_medallion_pipeline' retrieved from /opt/airflow/dags/spark_interval_ingestion.py
+[2026-05-23T16:36:37.988+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:36:37.988+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-05-23T16:36:38.000+0000] {logging_mixin.py:190} INFO - [2026-05-23T16:36:38.000+0000] {dag.py:4180} INFO - Setting next_dagrun for fraud_medallion_pipeline to 2026-05-23 16:35:00+00:00, run_after=2026-05-23 16:40:00+00:00
+[2026-05-23T16:36:38.007+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/spark_interval_ingestion.py took 0.061 seconds
