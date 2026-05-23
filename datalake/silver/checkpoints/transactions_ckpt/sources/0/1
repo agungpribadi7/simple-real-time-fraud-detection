@@ -1,4 +1,0 @@
-v1
-{"path":"file:///app/datalake/bronze/transactions/part-00000-c87adade-52d9-4d7c-95f5-82480d2df3e9-c000.snappy.parquet","timestamp":1779539705473,"batchId":1}
-{"path":"file:///app/datalake/bronze/transactions/part-00001-f5d1059b-9cda-4046-880f-b1885f267924-c000.snappy.parquet","timestamp":1779539705473,"batchId":1}
-{"path":"file:///app/datalake/bronze/transactions/part-00002-7100f093-c798-4f8c-a000-10a691d9effb-c000.snappy.parquet","timestamp":1779539705473,"batchId":1}
