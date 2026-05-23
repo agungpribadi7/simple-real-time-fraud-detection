@@ -1,6 +1,7 @@
 import json
 import random
 import uuid
+import time
 from datetime import datetime
 from confluent_kafka import Producer
 from confluent_kafka.admin import AdminClient, NewTopic
@@ -70,6 +71,8 @@ if __name__ == '__main__':
                 print(f"Sent {message_count} messages across the cluster...")
                 
             producer.poll(0)
+
+            time.sleep(0.01) 
 
     except KeyboardInterrupt:
         print(f"\nStopping! Flushing remaining messages in buffer...")

@@ -1,0 +1,7 @@
+v1
+{"path":"file:///app/datalake/bronze/transactions/part-00000-c1afa1d9-52f2-4032-82d2-113abb63f9f6-c000.snappy.parquet","timestamp":1779551094303,"batchId":8}
+{"path":"file:///app/datalake/bronze/transactions/part-00002-ebe83764-f30e-45f0-b8c7-dc6bb4f28bc7-c000.snappy.parquet","timestamp":1779551094303,"batchId":8}
+{"path":"file:///app/datalake/bronze/transactions/part-00001-2186ca89-a8d5-4114-9a49-080233fe7118-c000.snappy.parquet","timestamp":1779551094304,"batchId":8}
+{"path":"file:///app/datalake/bronze/transactions/part-00000-2165f655-a20c-4dd7-8b32-d8bafc537f62-c000.snappy.parquet","timestamp":1779551099509,"batchId":8}
+{"path":"file:///app/datalake/bronze/transactions/part-00001-c3a8c251-a3e2-464f-8243-cb57f6bf470f-c000.snappy.parquet","timestamp":1779551099509,"batchId":8}
+{"path":"file:///app/datalake/bronze/transactions/part-00002-466b587b-e2ed-4812-926c-5f4b3446e590-c000.snappy.parquet","timestamp":1779551099509,"batchId":8}

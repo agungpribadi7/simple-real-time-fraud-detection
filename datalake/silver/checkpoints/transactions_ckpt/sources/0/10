@@ -1,0 +1,4 @@
+v1
+{"path":"file:///app/datalake/bronze/transactions/part-00000-ffd4455b-fbcf-4a3f-a805-7b9f4f8d9f18-c000.snappy.parquet","timestamp":1779551965282,"batchId":10}
+{"path":"file:///app/datalake/bronze/transactions/part-00001-7ca64669-adf2-412e-b382-9730e67b68ef-c000.snappy.parquet","timestamp":1779551965282,"batchId":10}
+{"path":"file:///app/datalake/bronze/transactions/part-00002-5512f741-b380-4020-a8b4-67e7833505a1-c000.snappy.parquet","timestamp":1779551965282,"batchId":10}

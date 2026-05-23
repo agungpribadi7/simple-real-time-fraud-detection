@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, parse_json 
+from pyspark.sql.functions import col, parse_json, when, raise_error, concat, lit
 
 spark = SparkSession.builder \
     .appName("Bronze-Kafka-Ingestion-Variant") \
@@ -10,29 +10,49 @@ spark = SparkSession.builder \
 spark.sparkContext.setLogLevel("WARN")
 
 print("Connecting to Kafka Cluster over SSL...")
+#.option("kafka.ssl.keystore.location", "/opt/airflow/secrets/kafka1.keystore.jks") \
 
 kafka_stream = spark.readStream \
     .format("kafka") \
-    .option("kafka.bootstrap.servers", "localhost:9092,localhost:9093,localhost:9094") \
+    .option("kafka.bootstrap.servers", "host.docker.internal:9092,host.docker.internal:9093,host.docker.internal:9094") \
     .option("subscribe", "raw_transactions_v2") \
     .option("startingOffsets", "earliest") \
-    .option("maxOffsetsPerTrigger", 5000) \
     .option("kafka.security.protocol", "SSL") \
-    .option("kafka.ssl.truststore.location", "secrets/kafka.truststore.jks") \
+    .option("kafka.ssl.truststore.location", "./secrets/kafka.truststore.jks") \
     .option("kafka.ssl.truststore.password", "confluent") \
+    .option("kafka.ssl.keystore.location", "./secrets/kafka1.keystore.jks") \
+    .option("kafka.ssl.keystore.password", "confluent") \
+    .option("kafka.ssl.key.password", "confluent") \
     .option("kafka.ssl.endpoint.identification.algorithm", "") \
     .load()
 
-parsed_stream = kafka_stream \
-    .selectExpr("CAST(value AS STRING) as raw_json", "timestamp as kafka_timestamp") \
-    .select(parse_json(col("raw_json")).alias("variant_data"), col("kafka_timestamp"))
+raw_stream = kafka_stream \
+    .selectExpr("CAST(value AS STRING) as raw_json", "timestamp as kafka_timestamp")
 
-print("Stream configured with VARIANT! Waiting for data...")
+# 2. Parse the JSON and force a crash if it fails
+parsed_stream = raw_stream \
+    .withColumn("variant_data", parse_json(col("raw_json"))) \
+    .withColumn(
+        "variant_data",
+        when(
+            col("variant_data").isNull(), 
+            # If null, crash the pipeline and print the bad string!
+            raise_error(concat(lit("CRITICAL: Invalid JSON detected -> "), col("raw_json")))
+        ).otherwise(
+            # If valid, keep the variant data
+            col("variant_data")
+        )
+    ) \
+    .select("variant_data", "kafka_timestamp")
 
 query = parsed_stream.writeStream \
     .outputMode("append") \
-    .format("console") \
-    .option("truncate", False) \
+    .format("parquet") \
+    .option("path", "./datalake/bronze/transactions") \
+    .option("checkpointLocation", "./datalake/bronze/checkpoints/transactions_ckpt") \
+    .trigger(availableNow=True) \
     .start()
 
 query.awaitTermination()
+
+print("Batch processing complete. Exiting cleanly.")

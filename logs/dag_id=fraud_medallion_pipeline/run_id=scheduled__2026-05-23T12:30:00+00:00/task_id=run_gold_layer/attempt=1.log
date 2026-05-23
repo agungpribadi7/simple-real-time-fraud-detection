@@ -1,0 +1,68 @@
+[2026-05-23T12:35:11.275+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-05-23T12:35:11.283+0000] {taskinstance.py:2632} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_medallion_pipeline.run_gold_layer scheduled__2026-05-23T12:30:00+00:00 [queued]>
+[2026-05-23T12:35:11.286+0000] {taskinstance.py:2632} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_medallion_pipeline.run_gold_layer scheduled__2026-05-23T12:30:00+00:00 [queued]>
+[2026-05-23T12:35:11.286+0000] {taskinstance.py:2885} INFO - Starting attempt 1 of 2
+[2026-05-23T12:35:11.289+0000] {taskinstance.py:2908} INFO - Executing <Task(BashOperator): run_gold_layer> on 2026-05-23 12:30:00+00:00
+[2026-05-23T12:35:11.292+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=28793) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-05-23T12:35:11.292+0000] {standard_task_runner.py:72} INFO - Started process 28794 to run task
+[2026-05-23T12:35:11.292+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_medallion_pipeline', 'run_gold_layer', 'scheduled__2026-05-23T12:30:00+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/spark_interval_ingestion.py', '--cfg-path', '/tmp/tmpks3j_arp']
+[2026-05-23T12:35:11.293+0000] {standard_task_runner.py:105} INFO - Job 35: Subtask run_gold_layer
+[2026-05-23T12:35:11.309+0000] {task_command.py:467} INFO - Running <TaskInstance: fraud_medallion_pipeline.run_gold_layer scheduled__2026-05-23T12:30:00+00:00 [running]> on host 03f8e21ba966
+[2026-05-23T12:35:11.335+0000] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='bjk18261910@gmail.com' AIRFLOW_CTX_DAG_OWNER='agungpribadi' AIRFLOW_CTX_DAG_ID='fraud_medallion_pipeline' AIRFLOW_CTX_TASK_ID='run_gold_layer' AIRFLOW_CTX_EXECUTION_DATE='2026-05-23T12:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-05-23T12:30:00+00:00'
+[2026-05-23T12:35:11.335+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2026-05-23T12:35:11.339+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2026-05-23T12:35:11.340+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /app && python gold_aggregation.py']
+[2026-05-23T12:35:11.342+0000] {subprocess.py:99} INFO - Output:
+[2026-05-23T12:35:11.646+0000] {subprocess.py:106} INFO - WARNING: Using incubator modules: jdk.incubator.vector
+[2026-05-23T12:35:12.065+0000] {subprocess.py:106} INFO - Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+[2026-05-23T12:35:12.065+0000] {subprocess.py:106} INFO - Setting default log level to "WARN".
+[2026-05-23T12:35:12.065+0000] {subprocess.py:106} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2026-05-23T12:35:12.244+0000] {subprocess.py:106} INFO - 26/05/23 12:35:12 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2026-05-23T12:35:13.951+0000] {subprocess.py:106} INFO - 26/05/23 12:35:13 WARN ResolveWriteToStream: Temporary checkpoint location created which is deleted normally when the query didn't fail: /tmp/temporary-0335e30e-4924-44fb-9882-2c8af52bb0b6. If it's required to delete it under any circumstances, please set spark.sql.streaming.forceDeleteTempCheckpointLocation to true. Important to know deleting temp checkpoint folder is best effort.
+[2026-05-23T12:35:13.952+0000] {subprocess.py:106} INFO - 26/05/23 12:35:13 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[2026-05-23T12:35:14.007+0000] {subprocess.py:106} INFO - 26/05/23 12:35:14 WARN MicroBatchExecution: Disabling AQE since AQE is not supported in stateful workloads.
+[2026-05-23T12:35:17.452+0000] {subprocess.py:106} INFO - [Stage 1:====================================>                      (5 + 3) / 8][Stage 2:=========>                                             (36 + 10) / 200][Stage 2:==============>                                        (53 + 11) / 200][Stage 2:===================>                                   (71 + 10) / 200][Stage 2:=========================>                             (94 + 10) / 200][Stage 2:===============================>                      (115 + 10) / 200][Stage 2:=====================================>                (140 + 10) / 200][Stage 2:===========================================>          (160 + 10) / 200][Stage 2:================================================>     (179 + 10) / 200]                                                                                -------------------------------------------
+[2026-05-23T12:35:17.453+0000] {subprocess.py:106} INFO - Batch: 0
+[2026-05-23T12:35:17.454+0000] {subprocess.py:106} INFO - -------------------------------------------
+[2026-05-23T12:35:17.604+0000] {subprocess.py:106} INFO - +------------------------------------------+-------+------------------+--------------------+
+[2026-05-23T12:35:17.605+0000] {subprocess.py:106} INFO - |window                                    |user_id|total_spent_5m    |transaction_count_5m|
+[2026-05-23T12:35:17.605+0000] {subprocess.py:106} INFO - +------------------------------------------+-------+------------------+--------------------+
+[2026-05-23T12:35:17.605+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|8225   |6548.03           |3                   |
+[2026-05-23T12:35:17.605+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|1451   |4742.31           |3                   |
+[2026-05-23T12:35:17.605+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|7350   |3810.55           |4                   |
+[2026-05-23T12:35:17.606+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|6895   |4137.01           |3                   |
+[2026-05-23T12:35:17.606+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|3164   |1877.3899999999999|3                   |
+[2026-05-23T12:35:17.606+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|3215   |3808.3            |3                   |
+[2026-05-23T12:35:17.606+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|4063   |3897.14           |3                   |
+[2026-05-23T12:35:17.606+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|6499   |5090.4            |3                   |
+[2026-05-23T12:35:17.606+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|7857   |1607.52           |3                   |
+[2026-05-23T12:35:17.606+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|8840   |7341.280000000001 |4                   |
+[2026-05-23T12:35:17.607+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|3587   |5138.360000000001 |4                   |
+[2026-05-23T12:35:17.607+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|4913   |10668.009999999998|6                   |
+[2026-05-23T12:35:17.607+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|3571   |10976.75          |6                   |
+[2026-05-23T12:35:17.607+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|6715   |5592.08           |4                   |
+[2026-05-23T12:35:17.607+0000] {subprocess.py:106} INFO - |{2026-05-23 10:40:00, 2026-05-23 10:45:00}|5201   |5670.299999999999 |4                   |
+[2026-05-23T12:35:17.607+0000] {subprocess.py:106} INFO - |{2026-05-23 10:45:00, 2026-05-23 10:50:00}|9860   |2055.22           |3                   |
+[2026-05-23T12:35:17.608+0000] {subprocess.py:106} INFO - |{2026-05-23 10:45:00, 2026-05-23 10:50:00}|7398   |6151.05           |3                   |
+[2026-05-23T12:35:17.608+0000] {subprocess.py:106} INFO - |{2026-05-23 10:45:00, 2026-05-23 10:50:00}|4719   |5994.83           |5                   |
+[2026-05-23T12:35:17.608+0000] {subprocess.py:106} INFO - |{2026-05-23 10:45:00, 2026-05-23 10:50:00}|7610   |2819.8900000000003|3                   |
+[2026-05-23T12:35:17.609+0000] {subprocess.py:106} INFO - |{2026-05-23 10:45:00, 2026-05-23 10:50:00}|4639   |6769.59           |4                   |
+[2026-05-23T12:35:17.609+0000] {subprocess.py:106} INFO - +------------------------------------------+-------+------------------+--------------------+
+[2026-05-23T12:35:17.609+0000] {subprocess.py:106} INFO - only showing top 20 rows
+[2026-05-23T12:35:19.401+0000] {subprocess.py:106} INFO - [Stage 4:==============>                                        (54 + 10) / 200][Stage 4:=====================>                                 (77 + 10) / 200][Stage 4:============================>                         (104 + 10) / 200][Stage 4:===================================>                  (133 + 11) / 200][Stage 4:==========================================>           (156 + 10) / 200][Stage 4:================================================>     (181 + 10) / 200]                                                                                -------------------------------------------
+[2026-05-23T12:35:19.402+0000] {subprocess.py:106} INFO - Batch: 1
+[2026-05-23T12:35:19.402+0000] {subprocess.py:106} INFO - -------------------------------------------
+[2026-05-23T12:35:19.407+0000] {subprocess.py:106} INFO - +------+-------+--------------+--------------------+
+[2026-05-23T12:35:19.408+0000] {subprocess.py:106} INFO - |window|user_id|total_spent_5m|transaction_count_5m|
+[2026-05-23T12:35:19.408+0000] {subprocess.py:106} INFO - +------+-------+--------------+--------------------+
+[2026-05-23T12:35:19.408+0000] {subprocess.py:106} INFO - +------+-------+--------------+--------------------+
+[2026-05-23T12:35:19.408+0000] {subprocess.py:106} INFO - 
+[2026-05-23T12:35:19.435+0000] {subprocess.py:106} INFO - Starting Gold processing: Calculating Fraud Metrics...
+[2026-05-23T12:35:19.437+0000] {subprocess.py:106} INFO - Monitoring for fraudulent behavior...
+[2026-05-23T12:35:19.437+0000] {subprocess.py:106} INFO - Gold processing complete.
+[2026-05-23T12:35:19.879+0000] {subprocess.py:110} INFO - Command exited with return code 0
+[2026-05-23T12:35:19.893+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-05-23T12:35:19.893+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=fraud_medallion_pipeline, task_id=run_gold_layer, run_id=scheduled__2026-05-23T12:30:00+00:00, execution_date=20260523T123000, start_date=20260523T123511, end_date=20260523T123519
+[2026-05-23T12:35:19.906+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-05-23T12:35:19.912+0000] {taskinstance.py:3925} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-05-23T12:35:19.912+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

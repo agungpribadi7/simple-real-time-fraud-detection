@@ -1,0 +1,12 @@
+# Start with the official Airflow image you were already using
+FROM apache/airflow:2.11.2
+
+# 1. Switch to the root user to install system-level Java
+USER root
+RUN apt-get update && apt-get install -y default-jre
+
+# 2. Switch back to the default airflow user for security
+USER airflow
+
+# 3. Install PySpark so the BashOperator can execute your script
+RUN pip install pyspark==4.1.1

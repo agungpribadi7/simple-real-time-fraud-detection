@@ -1,0 +1,31 @@
+[2026-05-23T15:59:26.398+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-05-23T15:59:26.408+0000] {taskinstance.py:2632} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_medallion_pipeline.run_silver_layer scheduled__2026-05-23T15:45:00+00:00 [queued]>
+[2026-05-23T15:59:26.411+0000] {taskinstance.py:2632} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_medallion_pipeline.run_silver_layer scheduled__2026-05-23T15:45:00+00:00 [queued]>
+[2026-05-23T15:59:26.411+0000] {taskinstance.py:2885} INFO - Starting attempt 1 of 2
+[2026-05-23T15:59:26.415+0000] {taskinstance.py:2908} INFO - Executing <Task(BashOperator): run_silver_layer> on 2026-05-23 15:45:00+00:00
+[2026-05-23T15:59:26.418+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=13201) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-05-23T15:59:26.419+0000] {standard_task_runner.py:72} INFO - Started process 13202 to run task
+[2026-05-23T15:59:26.419+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_medallion_pipeline', 'run_silver_layer', 'scheduled__2026-05-23T15:45:00+00:00', '--job-id', '70', '--raw', '--subdir', 'DAGS_FOLDER/spark_interval_ingestion.py', '--cfg-path', '/tmp/tmpa3ume1e6']
+[2026-05-23T15:59:26.420+0000] {standard_task_runner.py:105} INFO - Job 70: Subtask run_silver_layer
+[2026-05-23T15:59:26.446+0000] {task_command.py:467} INFO - Running <TaskInstance: fraud_medallion_pipeline.run_silver_layer scheduled__2026-05-23T15:45:00+00:00 [running]> on host 03f8e21ba966
+[2026-05-23T15:59:26.479+0000] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='bjk18261910@gmail.com' AIRFLOW_CTX_DAG_OWNER='agungpribadi' AIRFLOW_CTX_DAG_ID='fraud_medallion_pipeline' AIRFLOW_CTX_TASK_ID='run_silver_layer' AIRFLOW_CTX_EXECUTION_DATE='2026-05-23T15:45:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-05-23T15:45:00+00:00'
+[2026-05-23T15:59:26.479+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2026-05-23T15:59:26.486+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2026-05-23T15:59:26.486+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /app && python silver_processing.py']
+[2026-05-23T15:59:26.489+0000] {subprocess.py:99} INFO - Output:
+[2026-05-23T15:59:26.923+0000] {subprocess.py:106} INFO - WARNING: Using incubator modules: jdk.incubator.vector
+[2026-05-23T15:59:27.789+0000] {subprocess.py:106} INFO - Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+[2026-05-23T15:59:27.789+0000] {subprocess.py:106} INFO - Setting default log level to "WARN".
+[2026-05-23T15:59:27.790+0000] {subprocess.py:106} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2026-05-23T15:59:28.545+0000] {subprocess.py:106} INFO - 26/05/23 15:59:28 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2026-05-23T15:59:32.303+0000] {subprocess.py:106} INFO - 26/05/23 15:59:32 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[2026-05-23T15:59:33.585+0000] {subprocess.py:106} INFO - [Stage 1:>                                                          (0 + 3) / 3]                                                                                Starting Silver processing: Enforcing Data Contracts...
+[2026-05-23T15:59:33.585+0000] {subprocess.py:106} INFO - Reading new data from Bronze layer...
+[2026-05-23T15:59:33.585+0000] {subprocess.py:106} INFO - Writing clean, flattened data to Silver layer...
+[2026-05-23T15:59:33.586+0000] {subprocess.py:106} INFO - Silver processing complete. Clean data securely stored!
+[2026-05-23T15:59:34.059+0000] {subprocess.py:110} INFO - Command exited with return code 0
+[2026-05-23T15:59:34.084+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-05-23T15:59:34.085+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=fraud_medallion_pipeline, task_id=run_silver_layer, run_id=scheduled__2026-05-23T15:45:00+00:00, execution_date=20260523T154500, start_date=20260523T155926, end_date=20260523T155934
+[2026-05-23T15:59:34.101+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-05-23T15:59:34.111+0000] {taskinstance.py:3925} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-05-23T15:59:34.111+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

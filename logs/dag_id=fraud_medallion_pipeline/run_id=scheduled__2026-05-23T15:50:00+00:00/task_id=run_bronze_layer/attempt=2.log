@@ -1,0 +1,60 @@
+[2026-05-23T16:35:07.030+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-05-23T16:35:07.049+0000] {taskinstance.py:2632} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_medallion_pipeline.run_bronze_layer scheduled__2026-05-23T15:50:00+00:00 [queued]>
+[2026-05-23T16:35:07.056+0000] {taskinstance.py:2632} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_medallion_pipeline.run_bronze_layer scheduled__2026-05-23T15:50:00+00:00 [queued]>
+[2026-05-23T16:35:07.056+0000] {taskinstance.py:2885} INFO - Starting attempt 2 of 2
+[2026-05-23T16:35:07.068+0000] {taskinstance.py:2908} INFO - Executing <Task(BashOperator): run_bronze_layer> on 2026-05-23 15:50:00+00:00
+[2026-05-23T16:35:07.079+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=31194) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-05-23T16:35:07.084+0000] {standard_task_runner.py:72} INFO - Started process 31197 to run task
+[2026-05-23T16:35:07.081+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_medallion_pipeline', 'run_bronze_layer', 'scheduled__2026-05-23T15:50:00+00:00', '--job-id', '73', '--raw', '--subdir', 'DAGS_FOLDER/spark_interval_ingestion.py', '--cfg-path', '/tmp/tmppbr23yo4']
+[2026-05-23T16:35:07.089+0000] {standard_task_runner.py:105} INFO - Job 73: Subtask run_bronze_layer
+[2026-05-23T16:35:07.142+0000] {task_command.py:467} INFO - Running <TaskInstance: fraud_medallion_pipeline.run_bronze_layer scheduled__2026-05-23T15:50:00+00:00 [running]> on host 03f8e21ba966
+[2026-05-23T16:35:07.229+0000] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='bjk18261910@gmail.com' AIRFLOW_CTX_DAG_OWNER='agungpribadi' AIRFLOW_CTX_DAG_ID='fraud_medallion_pipeline' AIRFLOW_CTX_TASK_ID='run_bronze_layer' AIRFLOW_CTX_EXECUTION_DATE='2026-05-23T15:50:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-05-23T15:50:00+00:00'
+[2026-05-23T16:35:07.230+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2026-05-23T16:35:07.243+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2026-05-23T16:35:07.245+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /app && python bronze_ingestion.py']
+[2026-05-23T16:35:07.256+0000] {subprocess.py:99} INFO - Output:
+[2026-05-23T16:35:08.130+0000] {subprocess.py:106} INFO - WARNING: Using incubator modules: jdk.incubator.vector
+[2026-05-23T16:35:09.316+0000] {subprocess.py:106} INFO - :: loading settings :: url = jar:file:/home/airflow/.local/lib/python3.12/site-packages/pyspark/jars/ivy-2.5.3.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2026-05-23T16:35:09.404+0000] {subprocess.py:106} INFO - Ivy Default Cache set to: /home/airflow/.ivy2.5.2/cache
+[2026-05-23T16:35:09.405+0000] {subprocess.py:106} INFO - The jars for the packages stored in: /home/airflow/.ivy2.5.2/jars
+[2026-05-23T16:35:09.408+0000] {subprocess.py:106} INFO - org.apache.spark#spark-sql-kafka-0-10_2.13 added as a dependency
+[2026-05-23T16:35:09.409+0000] {subprocess.py:106} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-2e20cc14-6755-4b6c-b7d3-60fe556dde8d;1.0
+[2026-05-23T16:35:09.410+0000] {subprocess.py:106} INFO - 	confs: [default]
+[2026-05-23T16:35:09.593+0000] {subprocess.py:106} INFO - 	found org.apache.spark#spark-sql-kafka-0-10_2.13;4.1.1 in central
+[2026-05-23T16:35:09.676+0000] {subprocess.py:106} INFO - 	found org.apache.spark#spark-token-provider-kafka-0-10_2.13;4.1.1 in central
+[2026-05-23T16:35:09.700+0000] {subprocess.py:106} INFO - 	found org.apache.kafka#kafka-clients;3.9.1 in central
+[2026-05-23T16:35:09.722+0000] {subprocess.py:106} INFO - 	found org.lz4#lz4-java;1.8.0 in central
+[2026-05-23T16:35:09.743+0000] {subprocess.py:106} INFO - 	found org.xerial.snappy#snappy-java;1.1.10.8 in central
+[2026-05-23T16:35:09.767+0000] {subprocess.py:106} INFO - 	found org.slf4j#slf4j-api;2.0.17 in central
+[2026-05-23T16:35:09.793+0000] {subprocess.py:106} INFO - 	found org.apache.hadoop#hadoop-client-runtime;3.4.2 in central
+[2026-05-23T16:35:09.823+0000] {subprocess.py:106} INFO - 	found org.apache.hadoop#hadoop-client-api;3.4.2 in central
+[2026-05-23T16:35:09.847+0000] {subprocess.py:106} INFO - 	found com.google.code.findbugs#jsr305;3.0.0 in central
+[2026-05-23T16:35:09.860+0000] {subprocess.py:106} INFO - 	found org.scala-lang.modules#scala-parallel-collections_2.13;1.2.0 in central
+[2026-05-23T16:35:09.873+0000] {subprocess.py:106} INFO - 	found org.apache.commons#commons-pool2;2.12.1 in central
+[2026-05-23T16:35:09.908+0000] {subprocess.py:106} INFO - :: resolution report :: resolve 478ms :: artifacts dl 22ms
+[2026-05-23T16:35:09.908+0000] {subprocess.py:106} INFO - 	:: modules in use:
+[2026-05-23T16:35:09.908+0000] {subprocess.py:106} INFO - 	com.google.code.findbugs#jsr305;3.0.0 from central in [default]
+[2026-05-23T16:35:09.908+0000] {subprocess.py:106} INFO - 	org.apache.commons#commons-pool2;2.12.1 from central in [default]
+[2026-05-23T16:35:09.909+0000] {subprocess.py:106} INFO - 	org.apache.hadoop#hadoop-client-api;3.4.2 from central in [default]
+[2026-05-23T16:35:09.909+0000] {subprocess.py:106} INFO - 	org.apache.hadoop#hadoop-client-runtime;3.4.2 from central in [default]
+[2026-05-23T16:35:09.909+0000] {subprocess.py:106} INFO - 	org.apache.kafka#kafka-clients;3.9.1 from central in [default]
+[2026-05-23T16:35:09.915+0000] {subprocess.py:106} INFO - 	org.apache.spark#spark-sql-kafka-0-10_2.13;4.1.1 from central in [default]
+[2026-05-23T16:35:09.916+0000] {subprocess.py:106} INFO - 	org.apache.spark#spark-token-provider-kafka-0-10_2.13;4.1.1 from central in [default]
+[2026-05-23T16:35:09.916+0000] {subprocess.py:106} INFO - 	org.lz4#lz4-java;1.8.0 from central in [default]
+[2026-05-23T16:35:09.916+0000] {subprocess.py:106} INFO - 	org.scala-lang.modules#scala-parallel-collections_2.13;1.2.0 from central in [default]
+[2026-05-23T16:35:09.916+0000] {subprocess.py:106} INFO - 	org.slf4j#slf4j-api;2.0.17 from central in [default]
+[2026-05-23T16:35:09.916+0000] {subprocess.py:106} INFO - 	org.xerial.snappy#snappy-java;1.1.10.8 from central in [default]
+[2026-05-23T16:35:09.916+0000] {subprocess.py:106} INFO - 	---------------------------------------------------------------------
+[2026-05-23T16:35:09.916+0000] {subprocess.py:106} INFO - 	|                  |            modules            ||   artifacts   |
+[2026-05-23T16:35:09.917+0000] {subprocess.py:106} INFO - 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2026-05-23T16:35:09.917+0000] {subprocess.py:106} INFO - 	---------------------------------------------------------------------
+[2026-05-23T16:35:09.917+0000] {subprocess.py:106} INFO - 	|      default     |   11  |   0   |   0   |   0   ||   11  |   0   |
+[2026-05-23T16:35:09.917+0000] {subprocess.py:106} INFO - 	---------------------------------------------------------------------
+[2026-05-23T16:35:09.920+0000] {subprocess.py:106} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-2e20cc14-6755-4b6c-b7d3-60fe556dde8d
+[2026-05-23T16:35:09.920+0000] {subprocess.py:106} INFO - 	confs: [default]
+[2026-05-23T16:35:09.932+0000] {subprocess.py:106} INFO - 	0 artifacts copied, 11 already retrieved (0kB/11ms)
+[2026-05-23T16:35:10.323+0000] {subprocess.py:106} INFO - 26/05/23 16:35:10 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2026-05-23T16:35:10.560+0000] {subprocess.py:106} INFO - Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+[2026-05-23T16:35:10.566+0000] {subprocess.py:106} INFO - Setting default log level to "WARN".
+[2026-05-23T16:35:10.567+0000] {subprocess.py:106} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2026-05-23T16:35:11.783+0000] {subprocess.py:106} INFO - 26/05/23 16:35:11 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
