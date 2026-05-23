@@ -2,3 +2,4 @@ logs/
 datalake/
 logs/
 .DS_Store
+eval*
