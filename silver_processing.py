@@ -2,9 +2,14 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, from_json
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType
 
+delta_package = "io.delta:delta-spark_2.13:4.1.0"
 # 1. Initialize Spark Session
 spark = SparkSession.builder \
     .appName("Silver_Fraud_Processing") \
+    .master("local[*]") \
+    .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
+    .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
+    .config("spark.jars.packages", delta_package) \
     .getOrCreate()
 
 print("Starting Silver processing: Enforcing Data Contracts...")
@@ -41,7 +46,7 @@ silver_df = bronze_stream \
 print("Writing clean, flattened data to Silver layer...")
 query = silver_df.writeStream \
     .outputMode("append") \
-    .format("parquet") \
+    .format("delta") \
     .option("path", "./datalake/silver/transactions") \
     .option("checkpointLocation", "./datalake/silver/checkpoints/transactions_ckpt") \
     .trigger(availableNow=True) \

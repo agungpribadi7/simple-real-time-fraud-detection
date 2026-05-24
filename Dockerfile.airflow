@@ -9,4 +9,4 @@ RUN apt-get update && apt-get install -y default-jre
 USER airflow
 
 # 3. Install PySpark so the BashOperator can execute your script
-RUN pip install pyspark==4.1.1
+RUN pip install pyspark==4.1.1 delta-spark==4.1.0

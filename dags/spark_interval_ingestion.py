@@ -38,4 +38,9 @@ with DAG(
         bash_command='cd /app && python gold_aggregation.py',
     )
 
-    ingest_bronze >> process_silver >> aggregate_gold
+    cleanup_old_data = BashOperator(
+        task_id='cleanup_retention_policy',
+        bash_command='cd /app && python delta_janitor.py',
+    )
+
+    ingest_bronze >> process_silver >> aggregate_gold >> cleanup_old_data

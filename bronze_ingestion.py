@@ -1,10 +1,17 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, parse_json, when, raise_error, concat, lit
 
+kafka_package = f"org.apache.spark:spark-sql-kafka-0-10_2.13:4.1.1"
+delta_package = "io.delta:delta-spark_2.13:4.1.0"
+
 spark = SparkSession.builder \
     .appName("Bronze-Kafka-Ingestion-Variant") \
     .master("local[*]") \
-    .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.13:4.1.1") \
+    .config("spark.driver.memory", "4g") \
+    .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
+    .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
+    .config("spark.jars.packages", f"{kafka_package},{delta_package}") \
+    .config("spark.databricks.delta.retentionDurationCheck.enabled", "false") \
     .getOrCreate()
 
 spark.sparkContext.setLogLevel("WARN")
@@ -47,7 +54,7 @@ parsed_stream = raw_stream \
 
 query = parsed_stream.writeStream \
     .outputMode("append") \
-    .format("parquet") \
+    .format("delta") \
     .option("path", "./datalake/bronze/transactions") \
     .option("checkpointLocation", "./datalake/bronze/checkpoints/transactions_ckpt") \
     .trigger(availableNow=True) \
