@@ -1,5 +1,5 @@
-🛡️ Simple Real-Time Fraud Detection
-A real-time data engineering pipeline built to ingest, process, and detect fraudulent transactions using a Medallion Architecture.
+# Simple Real-Time Fraud Detection
+🛡️ A real-time data engineering pipeline built to ingest, process, and detect fraudulent transactions using a Medallion Architecture.
 
 📖 # Development Log
 # May 24, 2026: Production-Ready Architecture
@@ -19,7 +19,7 @@ Generated stream data using a Kafka Producer.
 Utilized a heavy cluster configuration: 3 Kafka Nodes and 3 Spark Workers.
 Result: After 16 minutes of continuous message production to a Kafka topic, the entire Docker stack hit an Out-of-Memory/CPU lock and stopped responding. (Addressed by the May 23 optimizations).
 
-💻 # Local Environment Setup
+# Local Environment Setup
 1. Configure the Python & Java Environment
 Because PySpark relies on a modern Java backend, this project strictly requires OpenJDK 17.
 Run the following commands in your terminal:
