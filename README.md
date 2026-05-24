@@ -1,21 +1,25 @@
 🛡️ Simple Real-Time Fraud Detection
 A real-time data engineering pipeline built to ingest, process, and detect fraudulent transactions using a Medallion Architecture.
-📖 Development Log
-May 24, 2026: Production-Ready Architecture
+
+📖 #Development Log
+#May 24, 2026: Production-Ready Architecture
 🧹 Automated Data Lake Cleanup: Implemented a system to delete old Parquet files across all Medallion layers at predefined retention hours.
 📦 Delta Lake Upgrade: Transitioned the output format of every Medallion layer from standard Spark to Apache Delta Lake. This heavily simplifies bookkeeping, optimizes read/write operations, and efficiently garbage-collects old Parquet files.
 📧 Fraud Alerting: Configured an automated email trigger within the Gold Medallion layer to instantly notify stakeholders when fraudulent activity is detected in the rolling time window.
-May 23, 2026: Security, Orchestration & Optimization
+
+#May 23, 2026: Security, Orchestration & Optimization
 🔒 Security: "Witchcrafting" TLS between different containers to fully secure internal communication.
 🚨 Alerting: Added email notifications for Airflow task failures.
 ⚙️ Orchestration: All Medallion layers (Bronze, Silver, Gold) are now running concurrently within a single Airflow DAG.
 🚀 Optimization: Upgraded bronze_ingestion to run once every 5 minutes using the Airflow BashOperator and Spark's .trigger(availableNow=True) command. This massive CPU workload optimization prevents the cluster from locking up.
 🗑️ Log Management: To prevent Bronze ingestion from stopping after 16 minutes, utilized the Kafka UI (http://localhost:8085) to set a maximum size limit on topics, ensuring Kafka automatically deletes old messages to preserve disk space.
-May 22, 2026: Stress Testing
+
+#May 22, 2026: Stress Testing
 Generated stream data using a Kafka Producer.
 Utilized a heavy cluster configuration: 3 Kafka Nodes and 3 Spark Workers.
 Result: After 16 minutes of continuous message production to a Kafka topic, the entire Docker stack hit an Out-of-Memory/CPU lock and stopped responding. (Addressed by the May 23 optimizations).
-💻 Local Environment Setup
+
+💻 #Local Environment Setup
 1. Configure the Python & Java Environment
 Because PySpark relies on a modern Java backend, this project strictly requires OpenJDK 17.
 Run the following commands in your terminal:
