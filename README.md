@@ -46,11 +46,14 @@ sudo nano /etc/hosts
 Add the following line to the file, save, and exit:
 Plaintext
 127.0.0.1       host.docker.internal
+
 🧠 Architecture & Core Concepts
+
 Infrastructure Decisions
 Java 17: Utilizing OpenJDK 17 is critical. Modern Spark leverages the newest Java versions, and modern Kafka using this architecture no longer requires Zookeeper to maintain master-slave nodes (saving up to 2GB of memory). Furthermore, it allows Spark to utilize the Variant object, bypassing the need to hustle object types with StructType and manually manage memory bytes.
 Cluster Sizing: This repository utilizes 3 Spark Executors and 3 Kafka Nodes running in parallel inside a TLS-secured connection.
-Spark Execution Plan Under the Hood
+
+# Spark Execution Plan Under the Hood
 Understanding how Spark processes data in this pipeline:
 The Job: An action from Spark (like readStream or writeStream) creates a Job (e.g., Read JSON → Prettify format → Write to Delta).
 The Stage: The Spark engine breaks the Job into Stages. A new stage is created anytime data must be shuffled across the network (e.g., groupBy(), join(), or window()). Because bronze_ingestion features no complex aggregations, the entire process runs as 1 Stage.
